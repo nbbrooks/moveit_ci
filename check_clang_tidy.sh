@@ -41,6 +41,9 @@ _travis_run_clang_tidy_fix() {
 travis_fold start clang.tidy "Running clang-tidy check"
 travis_run_simple --display "- cd to repository source: $CI_SOURCE_PATH" cd $CI_SOURCE_PATH
 
+travis_run_simple git rev-parse --abbrev-ref HEAD
+travis_run_simple --display "TRAVIS_BRANCH: ($TRAVIS_BRANCH)"
+
 # Ensure the base branch ($TRAVIS_BRANCH) is available
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "$TRAVIS_BRANCH" ] ; then
     travis_run_simple --display "- ensure base branch ($TRAVIS_BRANCH) is available" git fetch origin "$TRAVIS_BRANCH"
