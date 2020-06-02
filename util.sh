@@ -121,6 +121,7 @@ travis_fold() {
 # - on failure: 2 if --assert option was given, otherwise return value of process
 # - on timeout: 124 (return value of timeout command)
 travis_run_impl() {
+  echo "travis_run_impl $@"
   local assert hide title display timing timeout cmd result trial=1 trials=1
 
   while true; do
@@ -220,6 +221,7 @@ done
 
   return "${result}"
 }
+
 
 # Run command(s) with timing, but without folding
 travis_run_simple() {
