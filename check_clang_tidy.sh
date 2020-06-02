@@ -50,6 +50,9 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "$TRAVIS_BRANCH" ] ; then
     git branch -f "$TRAVIS_BRANCH" FETCH_HEAD
 fi
 
+# To ignore current workspace changes (e.g. from Git LFS files), stage all current changes
+git add -u .
+
 # Find run-clang-tidy script: Xenial and Bionic install them with different names
 RUN_CLANG_TIDY_EXECUTABLE=$(ls -1 /usr/bin/run-clang-tidy* | head -1)
 test -z "$RUN_CLANG_TIDY_EXECUTABLE" && \
