@@ -112,17 +112,17 @@ It's also possible to run the moveit\_ci script locally, without Travis. We demo
 First clone the repo you want to test:
 
     cd /tmp/travis   # any working directory will do
-    git clone https://github.com/ros-planning/moveit2
-    cd moveit2
+    git clone -b eloquent-mesh-ex https://github.com/PickNikRobotics/rviz_visual_tools
+    cd rviz_visual_tools
 
 Next clone the CI script:
 
-    git clone -b ros2 https://github.com/ros-planning/moveit_ci .moveit_ci
+    git clone -b ros2 https://github.com/nbbrooks/moveit_ci .moveit_ci
 
 Manually define the variables, Travis would otherwise define for you. These are required:
 
     export TRAVIS_BRANCH=master
-    export ROS_DISTRO=crystal
+    export ROS_DISTRO=eloquent
     export ROS_REPO=ros
     export CC=gcc
     export CXX=g++
@@ -130,7 +130,7 @@ Manually define the variables, Travis would otherwise define for you. These are 
 The rest is optional:
 
     export UPSTREAM_WORKSPACE=moveit.rosinstall
-    export TEST=clang-format
+    export TEST=clang-tidy-fix
 
 Start the script
 
